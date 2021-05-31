@@ -17,18 +17,6 @@ export default function App() {
     cashGiven = event.target.value;
     setCashGiven(cashGiven);
   }
-  // function calculate() {
-  //   var amount = cashGiven - bill;
-  //   for (var i = 0; i <= 7; i++) {
-  //     if (amount / changeAmount[i] >= 1) {
-  //       notes[i] = amount / changeAmount[i];
-  //       amount = amount % changeAmount[i];
-  //       final = notes[i];
-  //       setFinal(final);
-  //       console.log(final);
-  //     }
-  //   }
-  // }
 
   return (
     <div className="App">
@@ -45,13 +33,13 @@ export default function App() {
           <div>
             <button
               onClick={() => {
+                notes = new Array(7);
                 var amount = cashGiven - bill;
                 for (var i = 0; i <= changeAmount.length; i++) {
                   if (amount / changeAmount[i] >= 1) {
                     notes[i] = amount / changeAmount[i];
                     amount = amount % changeAmount[i];
-                    notes.push(notes[i]);
-                    setFinal((notes) => [...notes]);
+                    setFinal((notes) => [...notes], notes[i]);
                   }
                 }
               }}
