@@ -37,7 +37,7 @@ export default function App() {
                 var amount = cashGiven - bill;
                 for (var i = 0; i <= changeAmount.length; i++) {
                   if (amount / changeAmount[i] >= 1) {
-                    notes[i] = amount / changeAmount[i];
+                    notes[i] = Math.floor(amount / changeAmount[i]);
                     amount = amount % changeAmount[i];
                     setFinal((notes) => [...notes], notes[i]);
                   }
