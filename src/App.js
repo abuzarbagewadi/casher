@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
+import gif from "./EMO_120.gif";
 
 var changeAmount = [2000, 500, 100, 20, 10, 5, 1];
 var notes = new Array(7);
@@ -38,6 +39,9 @@ export default function App() {
       setEmpty(false);
       notes = new Array(7);
       var amount = cashGiven - bill;
+      if (amount <= 0) {
+        alert("given amount is zero or less than bill amount");
+      }
       for (var i = 0; i <= changeAmount.length; i++) {
         if (amount / changeAmount[i] >= 1) {
           notes[i] = Math.floor(amount / changeAmount[i]);
@@ -56,8 +60,11 @@ export default function App() {
     <div className="App">
       <div className="container">
         <div className="intro">
-          <h1>Hello CodeSandbox</h1>
-          <h2>Start editing to see some magic happen!</h2>
+          <h1 style={{ color: "green" }}>Cash Register Manager</h1>
+          <h3 style={{ color: "green", padding: "0px 50px" }}>
+            know minimum number of notes to return, by entering bill amount and
+            cash given by the customer
+          </h3>
         </div>
         <main>
           <form>
@@ -106,13 +113,13 @@ export default function App() {
                     </tr>
                     <tr>
                       <th>Notes</th>
-                      <th>{notes[0]}</th>
-                      <th>{notes[1]}</th>
-                      <th>{notes[2]}</th>
-                      <th>{notes[3]}</th>
-                      <th>{notes[4]}</th>
-                      <th>{notes[5]}</th>
-                      <th>{notes[6]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[0]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[1]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[2]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[3]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[4]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[5]}</th>
+                      <th style={{ backgroundColor: "white" }}>{notes[6]}</th>
                     </tr>
                   </table>
                   <button type="button" onClick={clickHandler}>
@@ -120,17 +127,14 @@ export default function App() {
                   </button>
                 </div>
               )}
-              {/* <button onClick={resetter} type="reset">
-                Reset
-              </button> */}
             </div>
           </form>
           <div>{empty && <h2>PLease, Enter the Amounts Correctly!</h2>}</div>
           <h1>{final}</h1>
         </main>
       </div>
-      <aside>
-        <img src="./src/throw_flower.gif" />
+      <aside className="right">
+        <img src={gif} alt="gif" />
       </aside>
     </div>
   );
