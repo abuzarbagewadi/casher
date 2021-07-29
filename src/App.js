@@ -8,6 +8,9 @@ export default function App() {
   var [bill, setBill] = useState("");
   var [cashGiven, setCashGiven] = useState("");
   var [final, setFinal] = useState([]);
+  var [flag, setFalg] = useState(false);
+  const [flag2, setFlag2] = useState(false);
+  const [empty, setEmpty] = useState(false);
 
   function billAmount(event) {
     bill = event.target.value;
@@ -18,74 +21,117 @@ export default function App() {
     setCashGiven(cashGiven);
   }
 
+  const handleNext = () => {
+    if (!bill) {
+      setEmpty(true);
+    } else {
+      setFalg(true);
+      setEmpty(false);
+    }
+  };
+
+  function clickHandler() {
+    if (!cashGiven) {
+      setEmpty(true);
+    } else {
+      setFlag2(true);
+      setEmpty(false);
+      notes = new Array(7);
+      var amount = cashGiven - bill;
+      for (var i = 0; i <= changeAmount.length; i++) {
+        if (amount / changeAmount[i] >= 1) {
+          notes[i] = Math.floor(amount / changeAmount[i]);
+          amount = amount % changeAmount[i];
+          setFinal((notes) => [...notes], notes[i]);
+        }
+      }
+    }
+  }
+
+  function resetter() {
+    setFlag2(false);
+  }
+
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <main>
-        <div>
-          <input onChange={billAmount} className="bil-amt" />
-          <h2>Bill Amount: {bill}</h2>
-          <div id="myDIV">
-            <input onChange={givenAmount} className="bil-amt" />
-            <h2>Amount given :{cashGiven} </h2>
-          </div>
-          <div>
-            <button
-              onClick={() => {
-                notes = new Array(7);
-                var amount = cashGiven - bill;
-                for (var i = 0; i <= changeAmount.length; i++) {
-                  if (amount / changeAmount[i] >= 1) {
-                    notes[i] = Math.floor(amount / changeAmount[i]);
-                    amount = amount % changeAmount[i];
-                    setFinal((notes) => [...notes], notes[i]);
-                  }
-                }
-              }}
-            >
-              Calculate
-            </button>
-            <h1>{final}</h1>
-            <div>
-              <ul>
-                <ul>2000notes</ul>
-                {notes[0]}
-              </ul>
-
-              <ul>
-                <ul>500notes</ul>
-                {notes[1]}
-              </ul>
-
-              <ul>
-                <ul>100notes</ul>
-                {notes[2]}
-              </ul>
-
-              <ul>
-                <ul>20notes</ul>
-                {notes[3]}
-              </ul>
-
-              <ul>
-                <ul>10notes</ul>
-                {notes[4]}
-              </ul>
-
-              <ul>
-                <ul>5notes</ul>
-                {notes[5]}
-              </ul>
-
-              <ul>
-                <ul>1notes</ul>
-                {notes[6]}
-              </ul>
-            </div>
-          </div>
+      <div className="container">
+        <div className="intro">
+          <h1>Hello CodeSandbox</h1>
+          <h2>Start editing to see some magic happen!</h2>
         </div>
-      </main>
+        <main>
+          <form>
+            <div className="bill-amount-input">
+              <label for="bil-amt">
+                <p>Enter Bill Amount</p>
+              </label>
+              <input onChange={billAmount} id="bil-amt" />
+              {!flag && (
+                <button type="button" onClick={handleNext}>
+                  Next
+                </button>
+              )}
+            </div>
+            <div className="given-amount-input">
+              {flag && (
+                <div className="given-amount">
+                  <label for="given-amt">
+                    <p>Enter Given Amount</p>
+                  </label>
+                  <input onChange={givenAmount} id="given-amt" />
+                  {!flag2 && (
+                    <button type="button" onClick={clickHandler}>
+                      Calculate
+                    </button>
+                  )}
+                  <button onClick={resetter} type="reset">
+                    Reset
+                  </button>
+                </div>
+              )}
+            </div>
+            <div>
+              {flag2 && (
+                <div>
+                  <table id="tables">
+                    <tr>
+                      <th>No.of Notes</th>
+                      <th>2000</th>
+                      <th>500</th>
+                      <th>100</th>
+                      <th>20</th>
+                      <th>10</th>
+                      <th>5</th>
+                      <th>1</th>
+                    </tr>
+                    <tr>
+                      <th>Notes</th>
+                      <th>{notes[0]}</th>
+                      <th>{notes[1]}</th>
+                      <th>{notes[2]}</th>
+                      <th>{notes[3]}</th>
+                      <th>{notes[4]}</th>
+                      <th>{notes[5]}</th>
+                      <th>{notes[6]}</th>
+                    </tr>
+                  </table>
+                  <button type="button" onClick={clickHandler}>
+                    Calculate
+                  </button>
+                </div>
+              )}
+              {/* <button onClick={resetter} type="reset">
+                Reset
+              </button> */}
+            </div>
+          </form>
+          <div>{empty && <h2>PLease, Enter the Amounts Correctly!</h2>}</div>
+          <h1>{final}</h1>
+        </main>
+      </div>
+      <aside>
+        <img src="./src/throw_flower.gif" />
+      </aside>
     </div>
   );
 }
