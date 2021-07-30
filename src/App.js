@@ -23,7 +23,7 @@ export default function App() {
   }
 
   const handleNext = () => {
-    if (!bill) {
+    if (!bill || bill <= 0) {
       setEmpty(true);
     } else {
       setFalg(true);
@@ -32,7 +32,7 @@ export default function App() {
   };
 
   function clickHandler() {
-    if (!cashGiven) {
+    if (!cashGiven || cashGiven <= 0) {
       setEmpty(true);
     } else {
       setFlag2(true);
