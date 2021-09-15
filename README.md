@@ -1,4 +1,4 @@
-# Premier Shows 🎬 (Mark-9)
+# Cash Register Manager 💸 (Mark-10)
 
 [live app](https://bill-amount-manager.netlify.app/)
 
