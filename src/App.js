@@ -41,10 +41,12 @@ export default function App() {
       setEmpty(false);
       notes = new Array(0, 0, 0, 0, 0, 0, 0);
       var amount = cashGiven - bill;
-      if (amount <= 0) {
+      if (amount < 0) {
         alert("given amount is zero or less than bill amount");
         setFlag2(false);
         setEmpty(true);
+      } else if(amount === 0){
+        setFinal((notes = new Array(0, 0, 0, 0, 0, 0, 0)));
       }
       for (var i = 0; i <= changeAmount.length; i++) {
         if (amount / changeAmount[i] >= 1) {
