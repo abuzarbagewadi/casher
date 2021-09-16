@@ -34,14 +34,17 @@ export default function App() {
   function clickHandler() {
     if (!cashGiven || cashGiven <= 0) {
       setEmpty(true);
-      setFinal(notes = new Array(0,0,0,0,0,0,0));
+      setFlag2(false);
+      setFinal((notes = new Array(0, 0, 0, 0, 0, 0, 0)));
     } else {
       setFlag2(true);
       setEmpty(false);
-      notes = new Array(0,0,0,0,0,0,0);
+      notes = new Array(0, 0, 0, 0, 0, 0, 0);
       var amount = cashGiven - bill;
       if (amount <= 0) {
         alert("given amount is zero or less than bill amount");
+        setFlag2(false);
+        setEmpty(true);
       }
       for (var i = 0; i <= changeAmount.length; i++) {
         if (amount / changeAmount[i] >= 1) {
