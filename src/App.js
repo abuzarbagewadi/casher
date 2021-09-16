@@ -131,7 +131,7 @@ export default function App() {
             </div>
           </form>
           <div>{empty && <h2>PLease, Enter the Amounts Correctly!</h2>}</div>
-          <h1>{final}</h1>
+          {/* <h1>{final}</h1> */}
         </main>
       </div>
       <aside className="right">
