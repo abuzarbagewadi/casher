@@ -34,7 +34,7 @@ export default function App() {
   function clickHandler() {
     if (!cashGiven || cashGiven <= 0) {
       setEmpty(true);
-      setFinal([0,0,0,0,0,0,0]);
+      setFinal(notes = new Array(0,0,0,0,0,0,0));
     } else {
       setFlag2(true);
       setEmpty(false);
