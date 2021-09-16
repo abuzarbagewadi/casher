@@ -147,6 +147,38 @@ export default function App() {
       <aside className="right">
         <img src={gif} alt="gif" />
       </aside>
+      <footer id="footer">
+        <div id="footer-container">
+          <div className="social">
+            <h3>Social</h3>
+            <a href="https://www.linkedin.com/in/irfan-nawaz/">
+              <i
+                className="fab fa-linkedin-in"
+                style={{ paddingRight: "10px", paddingTop: "5px" }}
+              ></i>
+              linkedin
+            </a>
+            <a href="https://twitter.com/shaik__irfan">
+              <i
+                className="fab fa-twitter"
+                style={{ paddingRight: "10px", paddingTop: "5px" }}
+              ></i>
+              twitter
+            </a>
+            <a href="https://github.com/Irfan-vit">
+              <i
+                className="fab fa-github"
+                style={{ paddingRight: "10px", paddingTop: "5px" }}
+              ></i>
+              github
+            </a>
+          </div>
+          <div className="author">
+            <h3>Author</h3>
+            <p>Made With ❤️ by Shaik Md Irfan Nawaz</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
