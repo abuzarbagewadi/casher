@@ -36,6 +36,9 @@ export default function App() {
       setEmpty(true);
       setFlag2(false);
       setFinal((notes = new Array(0, 0, 0, 0, 0, 0, 0)));
+    } else if(!bill || bill <= 0) {
+      setEmpty(true);
+      setFalg(false);
     } else {
       setFlag2(true);
       setEmpty(false);
