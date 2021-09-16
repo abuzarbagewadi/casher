@@ -37,7 +37,7 @@ export default function App() {
     } else {
       setFlag2(true);
       setEmpty(false);
-      notes = new Array(7);
+      notes = new Array(0,0,0,0,0,0,0);
       var amount = cashGiven - bill;
       if (amount <= 0) {
         alert("given amount is zero or less than bill amount");
@@ -72,7 +72,7 @@ export default function App() {
               <label for="bil-amt">
                 <p>Enter Bill Amount</p>
               </label>
-              <input onChange={billAmount} id="bil-amt" />
+              <input type="number" onChange={billAmount} id="bil-amt" />
               {!flag && (
                 <button type="button" onClick={handleNext}>
                   Next
@@ -85,7 +85,7 @@ export default function App() {
                   <label for="given-amt">
                     <p>Enter Given Amount</p>
                   </label>
-                  <input onChange={givenAmount} id="given-amt" />
+                  <input type="number" onChange={givenAmount} id="given-amt" />
                   {!flag2 && (
                     <button type="button" onClick={clickHandler}>
                       Calculate
