@@ -36,9 +36,10 @@ export default function App() {
       setEmpty(true);
       setFlag2(false);
       setFinal((notes = new Array(0, 0, 0, 0, 0, 0, 0)));
-    } else if(!bill || bill <= 0) {
+    } else if (!bill || bill <= 0) {
       setEmpty(true);
       setFalg(false);
+      setFlag2(false);
     } else {
       setFlag2(true);
       setEmpty(false);
@@ -48,7 +49,7 @@ export default function App() {
         alert("given amount is zero or less than bill amount");
         setFlag2(false);
         setEmpty(true);
-      } else if(amount === 0){
+      } else if (amount === 0) {
         setFinal((notes = new Array(0, 0, 0, 0, 0, 0, 0)));
       }
       for (var i = 0; i <= changeAmount.length; i++) {
@@ -63,6 +64,7 @@ export default function App() {
 
   function resetter() {
     setFlag2(false);
+    setFalg(false);
   }
 
   return (
