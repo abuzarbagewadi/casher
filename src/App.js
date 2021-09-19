@@ -114,23 +114,19 @@ export default function App() {
                   <table id="tables">
                     <tr>
                       <th>No.of Notes</th>
-                      <th>2000</th>
-                      <th>500</th>
-                      <th>100</th>
-                      <th>20</th>
-                      <th>10</th>
-                      <th>5</th>
-                      <th>1</th>
+                      {changeAmount.map((items) => {
+                        return <th>{items}</th>;
+                      })}
                     </tr>
                     <tr>
                       <th>Notes</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[0]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[1]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[2]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[3]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[4]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[5]}</th>
-                      <th style={{ backgroundColor: "white" }}>{notes[6]}</th>
+                      {changeAmount.map((items, index) => {
+                        return (
+                          <th style={{ backgroundColor: "white" }}>
+                            {notes[index]}
+                          </th>
+                        );
+                      })}
                     </tr>
                   </table>
                   <button type="button" onClick={clickHandler}>
